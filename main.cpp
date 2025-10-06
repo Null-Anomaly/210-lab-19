@@ -35,27 +35,24 @@ int main()
     int hot;
     double rating;
     string comment;
-    Node *head = nullptr;
+    movie[0].head = nullptr;
 
     ifstream fin("Test.txt");
     if(fin.good())
     {
-        cout << "Enter review rating 0-5: \n";
-            cin >> rating;
-            
-            //Input validation for rating
-            while(rating < 0 || rating > 5)
-            {
-                cout << "Please enter a rating between 0 and 5.\n";
-                cin >> rating;
-            }
+        int i = 0;
+        while(getline(fin, comment))
+        {
 
-            cout << "Enter review comment: \n";
-            cin >> comment;
-            addToHead(head, rating, comment);
-            cout << "Enter another review? Y/N: \n";
-            cin >> adder;
-            adder = tolower(adder);
+        }
+        cout << "Enter review rating 0-5: \n";
+        cin >> rating;
+        cout << "Enter review comment: \n";
+        cin >> comment;
+        addToHead(head, rating, comment);
+        cout << "Enter another review? Y/N: \n";
+        cin >> adder;
+        dder = tolower(adder);
 
     }
 
@@ -95,7 +92,7 @@ void addToHead(Node *&hd, float val, string com)
     hd = newNode;
 }
 
-//Function that adds a new node to the tail.
+/*Function that adds a new node to the tail.
 void addToTail(Node *&hd, float val, string com)
 {
     Node *newNode = new Node;
@@ -116,4 +113,4 @@ void addToTail(Node *&hd, float val, string com)
         }
         temp->next = newNode;
     }
-}
+}*/
