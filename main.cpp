@@ -2,6 +2,9 @@
 IDE used: Visual Studio Code*/
 
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
 using namespace std;
 
 //Struct for the linked list node
@@ -9,6 +12,15 @@ struct Node {
     float value;
     string review;
     Node *next;
+};
+
+class Movie
+{
+
+    private:
+    Node *head;
+    string title;
+
 };
 
 //Function prototypes
@@ -19,31 +31,16 @@ void addToTail(Node *&, float, string);
 int main() 
 {
     //Variables
+    Movie movie[4];
     int hot;
     double rating;
     string comment;
     Node *head = nullptr;
 
-    //User input
-    cout << "Which linked list method should we use?\n";
-    cout << "[1] New nodes are added to the head of each linked list\n";
-    cout << "[2] New nodes are added to the tail of each linked list\n";
-    cin >> hot;
-
-    //Checks to see if Head or Tail was selected
-    while(hot != 1 && hot != 2)
+    ifstream fin("Test.txt");
+    if(fin.good())
     {
-        cout << "Invalid input. Please enter 1 or 2.\n";
-        cin >> hot;
-    }
-
-    //For nodes being added to the head of the list
-    if (hot == 1)
-    {
-        char adder = 'y';
-        while(adder == 'y')
-        {
-            cout << "Enter review rating 0-5: \n";
+        cout << "Enter review rating 0-5: \n";
             cin >> rating;
             
             //Input validation for rating
@@ -59,35 +56,16 @@ int main()
             cout << "Enter another review? Y/N: \n";
             cin >> adder;
             adder = tolower(adder);
-        }
-
 
     }
 
-    //For nodes being added to the tail of the list
-    if (hot == 2)
-    {
-        char adder = 'y';
-        while(adder == 'y')
-        {
-            cout << "Enter review rating 0-5: \n";
-            cin >> rating;
+    
 
-            //Input validation for rating
-            while(rating < 0 || rating > 5)
-            {
-                cout << "Please enter a rating between 0 and 5.\n";
-                cin >> rating;
-            }
-            cout << "Enter review comment: \n";
-            cin >> comment;
-            addToTail(head, rating, comment);
-            cout << "Enter another review? Y/N: \n";
-            cin >> adder;
-            adder = tolower(adder);
-        }
-        
-    }
+            
+
+
+
+
 
     //Prints out the linked list
     cout << "Outputting all reviews:\n";
